@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
  
 import Task from './Task.js';
- 
+import Form from './Form';
+
 // App component - represents the whole app
 export default class App extends Component {
   getTasks() {
@@ -21,10 +22,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
-        <header>
-          <h1>Todo List</h1>
-        </header>
- 
+        <Form />
         <ul>
           {this.renderTasks()}
         </ul>
