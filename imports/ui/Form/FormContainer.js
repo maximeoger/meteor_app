@@ -30,7 +30,11 @@ class FormContainer extends Component {
     e.preventDefault();
     const { lastname, firstname, github } = this.state; 
 
-    
+    if(lastname === "" || firstname === "" || github === ""){
+      alert('Merci de remplir tours les champs')
+      return
+    }
+
     Students.insert({
       lastname,
       firstname,
