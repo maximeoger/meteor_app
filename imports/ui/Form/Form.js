@@ -1,23 +1,47 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 
-const Form = ({handleSubmit}) => {
-  return (
+const Form = ({handleSubmit, handleChange, lastname, firstname, github}) => {
+    return (
     <Fragment>
+
       <header>
-          <h1>Ajouter un eleve</h1>
+        <h1>Ajouter un eleve</h1>
       </header>
+
       <form onSubmit={handleSubmit}>
-        <input type="text" name="lastname"></input>
-        <input type="text" name="firstname"></input>
-        <input type="text" name="classroom"></input>
-        <select>
-          <option value="">Choisissez un metier</option>
-          <option value="dev">Développeur</option>
-          <option value="design">Designer</option>
-          <option value="non-binary">Non binaire</option>
-        </select>
+
+      <label>
+      Nom de famille
+      <input type="text"
+          placeholder="nom de famille" 
+          onChange={handleChange} 
+          value={lastname} 
+          name="lastname"></input>
+      </label>
+      
+      <label>
+        prénom
+      <input type="text" 
+          placeholder="prénom"
+          onChange={handleChange} 
+          value={firstname} 
+          name="firstname"></input>
+      </label>
+      
+
+      <label>
+        lien github
+      <input type="text"
+          placeholder="lien github" 
+          onChange={handleChange} 
+          value={github} 
+          name="github"></input>
+      </label>
+    
+       
         <button type="submit">go</button>
-     </form>
+      </form>
+
     </Fragment>
   )
 }

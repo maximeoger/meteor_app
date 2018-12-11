@@ -1,11 +1,21 @@
 import React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
 
-const List = () => {
+import Students from '../db/Students.js';
+
+const List = (props) => {
+
   return (
     <ul>
-      <li></li>
+      {props.students.map(item => {
+        return <li key={item._id} > {item.firstname} {item.lastname} <a href={item.github}>{item.github}</a></li>
+      })}
     </ul>
   )
 }
 
-export default List;
+export default withTracker(() => {
+  return {
+    students: Students.find({}).fetch(),
+  }
+})(List);
