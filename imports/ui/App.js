@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
- 
 import Task from './Task.js';
-import Form from './Form';
+import FormContainer from './Form/FormContainer';
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -22,7 +21,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
-        <Form />
+        <FormContainer />
         <ul>
           {this.renderTasks()}
         </ul>
