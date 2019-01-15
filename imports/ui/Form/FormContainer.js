@@ -31,6 +31,19 @@ class FormContainer extends Component {
     })
   }
 
+  handleGithubInput = async e => {
+    const value = e.target.value;
+    const name = e.target.name;
+    this.setState({ [name]: value})
+    if( value.length % 3 == 0 ) {
+      await fetch(`https://api.github.com/search/users?q=${value}`)
+              .then(response => response.json())
+              .then(data => console.log(data))
+    }
+    
+
+  }
+
   componentDidUpdate(){
 
     const { lastname, firstname, github } = this.state;
@@ -82,7 +95,9 @@ class FormContainer extends Component {
         firstname={this.state.firstname}
         github={this.state.github}
         handleChange={this.handleChange}
-        handleSubmit={this.submitForm}/>
+        handleSubmit={this.submitForm}
+        handleGithubInput={this.handleGithubInput}
+        />
     )
   }
 }

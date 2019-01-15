@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const Form = ({handleSubmit, handleChange, lastname, firstname, github}) => {
+const Form = ({handleSubmit, handleChange, lastname, firstname, github, handleGithubInput}) => {
     return (
     <Fragment>
 
@@ -33,7 +33,7 @@ const Form = ({handleSubmit, handleChange, lastname, firstname, github}) => {
         lien github
       <input type="text"
           placeholder="lien github" 
-          onChange={handleChange} 
+          onChange={handleGithubInput} 
           value={github} 
           name="github"></input>
       </label>
