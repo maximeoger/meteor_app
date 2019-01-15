@@ -9,7 +9,7 @@ const Form = ({handleSubmit, handleChange, lastname, firstname, github}) => {
       </header>
 
       <form onSubmit={handleSubmit}>
-
+      
       <label>
       Nom de famille
       <input type="text"

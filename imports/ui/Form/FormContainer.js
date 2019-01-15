@@ -13,12 +13,17 @@ class FormContainer extends Component {
     }
 
     this.submitForm = this.submitForm.bind(this);
+    
     this.handleChange = this.handleChange.bind(this);
+    
   }
 
   handleChange(event){
+
     const target = event.target;
+
     const value = target.type === 'checkbox' ? target.checked : target.value;
+
     const name = target.name;
 
     this.setState({
@@ -26,12 +31,34 @@ class FormContainer extends Component {
     })
   }
 
+  componentDidUpdate(){
+
+    const { lastname, firstname, github } = this.state;
+
+    const { student } = this.props;
+
+    const allowUpdate = (lastname !== "" || firstname !== "" || github !== "") && student
+
+    console.log(allowUpdate);
+
+    if(allowUpdate){
+      this.setState({
+        lastname: student.lastname,
+        firstname: student.firstname,
+        github: student.github
+      })
+    }
+  }
+
   submitForm(e){
+
     e.preventDefault();
+
     const { lastname, firstname, github } = this.state; 
 
     if(lastname === "" || firstname === "" || github === ""){
       alert('Merci de remplir tours les champs')
+      
       return
     }
 
