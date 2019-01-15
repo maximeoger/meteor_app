@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from './Form';
 import Students from '../../db/Students';
+import ChooseList from './ChooseList'
 
 class FormContainer extends Component {
   constructor(props){
@@ -10,6 +11,7 @@ class FormContainer extends Component {
       lastname: "",
       firstname: "",
       github: "",
+      githubResults: {}
     }
 
     this.submitForm = this.submitForm.bind(this);
@@ -38,7 +40,11 @@ class FormContainer extends Component {
     if( value.length % 3 == 0 ) {
       await fetch(`https://api.github.com/search/users?q=${value}`)
               .then(response => response.json())
-              .then(data => console.log(data))
+              .then(data => {
+                this.setState({
+                  githubResults: data
+                })
+              })
     }
     
 
@@ -89,15 +95,27 @@ class FormContainer extends Component {
   }
 
   render() {
+    const {
+      lastname,
+      firstname,
+      github,
+      githubResults
+    } = this.state
     return (
-      <Form 
-        lastname={this.state.lastname}
-        firstname={this.state.firstname}
-        github={this.state.github}
-        handleChange={this.handleChange}
-        handleSubmit={this.submitForm}
-        handleGithubInput={this.handleGithubInput}
+      <div>
+        <Form 
+          lastname={ lastname }
+          firstname={ firstname }
+          github={ github }
+          handleChange={this.handleChange}
+          handleSubmit={this.submitForm}
+          handleGithubInput={this.handleGithubInput}
+        >
+        </Form>
+        <ChooseList 
+          githubResults={ githubResults }
         />
+      </div>
     )
   }
 }
