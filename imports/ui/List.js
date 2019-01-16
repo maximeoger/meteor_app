@@ -18,7 +18,7 @@ const List = (props) => {
       {props.students.map(item => 
              <Card key={item._id}> 
 
-                <img src={item.avatar_url}/>
+                <img width="50" src={item.avatar_url}/>
 
                 <div className="column">
                  {item.firstname} {item.lastname} 
@@ -30,7 +30,7 @@ const List = (props) => {
                 
                 <div className="column">
                   <a className="button" href={`/${item._id}`}>Modifier</a>
-                  <a className="button button-clear" href="#">Suprimer</a>
+                  <a className="button button-clear" href="#" onClick={ id => props.handleDelete( id )  }>Suprimer</a>
                 </div>
                 
             </Card>

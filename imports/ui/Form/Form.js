@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import ChooseList from './ChooseList';
 
 const Form = ({handleSubmit, handleChange, lastname, firstname, github, handleGithubInput}) => {
     return (
@@ -28,20 +29,20 @@ const Form = ({handleSubmit, handleChange, lastname, firstname, github, handleGi
           name="firstname"></input>
       </label>
       
-
-      <label>
-        lien github
-      <input type="text"
-          placeholder="lien github" 
-          onChange={handleGithubInput} 
-          value={github} 
-          name="github"></input>
-      </label>
+      <div>
+        <label>
+          lien github
+        <input type="text"
+            placeholder="lien github" 
+            onChange={handleGithubInput} 
+            value={github} 
+            name="github"></input>
+        </label>
+      </div>
       
        
         <button type="submit">go</button>
       </form>
-
     </Fragment>
   )
 }
