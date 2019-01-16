@@ -3,13 +3,14 @@ import List from './List'
 import Students from '../db/Students'
 class ListContainer extends Component {
 
-  handleSubmit( id ) {
-    Students.remove( {"_id":  item._id })
+  handleDelete( id ) {
+    Students.remove( {"_id":  id })
   }
+
 
   render() {
     return (
-      <List />
+      <List handleDelete={ this.handleDelete }/>
     )
   }
 }
