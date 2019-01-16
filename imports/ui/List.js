@@ -3,9 +3,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import Students from '../db/Students.js';
 import Card from '../ui/Components/Card/Card';
 
-const List = (props) => {
-
-  if(props.students.length === 0){
+const List = ({ students, handleDelete }) => {
+  
+  if(students.length === 0){
     return( 
     <Fragment>
       <p>La liste est vide</p>
@@ -15,10 +15,10 @@ const List = (props) => {
 
   return (
     <Fragment>
-      {props.students.map(item => 
+      {students.map(item => 
              <Card key={item._id}> 
 
-                <img src={item.avatar_url}/>
+                <img width="50" src={item.avatar_url}/>
 
                 <div className="column">
                  {item.firstname} {item.lastname} 
@@ -29,8 +29,8 @@ const List = (props) => {
                 </div>
                 
                 <div className="column">
-                  <a className="button" href={`/update-user/${item._id}`}>Modifier</a>
-                  <a className="button button-clear" href="#">Suprimer</a>
+                  <a className="button" href={`/${item._id}`}>Modifier</a>
+                  <a className="button button-clear" href="#" onClick={ () => handleDelete( item._id )  }>Suprimer</a>
                 </div>
                 
             </Card>
