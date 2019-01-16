@@ -41,8 +41,6 @@ const List = (props) => {
 
 export default withTracker( () => {
   return {
-    students: Students.find({}).fetch(),
+    students: Students.find({}).fetch()
   }
-})(List)
-
-//<Link className="button" to={`/${item._id}`}>Modifier</Link>
+})(List);

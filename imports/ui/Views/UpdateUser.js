@@ -2,34 +2,41 @@ import React, { Component, Fragment } from 'react';
 import Link from '../Components/Link/Link';
 import FormContainer from '../Form/FormContainer';
 import Students from '../../db/Students';
+import { withTracker } from 'meteor/react-meteor-data';
 
 class UpdateUser extends Component {
-  componentDidMount(){
-    this.findStudent()
+  constructor(props){
+    super(props)
   }
-
-  findStudent = async () => {
-
-    const { params: { userId } } = this.props;
-    console.log(typeof userId, userId)
-
-    let data = await Students.findOne({"_id": userId});
-
-    console.log(data)
-  }
-
   render() {
+    const { student } = this.props
+    
     return (
       <Fragment>
         <Link url="/">Retour</Link>
         <header>
           <h1>Modifier un eleve</h1>
         </header>
+        {
+        student ?
         <FormContainer 
-          lastname="coucou"/>
+          lastname={student.lastname}
+          firstname={student.firstname}
+          login={student.login}
+          html_url={student.html_url}
+          avatar_url={student.avatar_url}
+          url={student.url}
+          />
+          : <p>chargement...</p>
+        }
+        
       </Fragment>
     )
   }
 }
 
-export default UpdateUser;
+export default withTracker( (props) => {
+  return {
+    student: Students.findOne({"_id": props.params.userId})
+  }
+})(UpdateUser);
