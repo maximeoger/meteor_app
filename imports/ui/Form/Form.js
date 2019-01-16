@@ -4,10 +4,6 @@ const Form = ({handleSubmit, handleChange, lastname, firstname, github, handleGi
     return (
     <Fragment>
 
-      <header>
-        <h1>Ajouter un eleve</h1>
-      </header>
-
       <form onSubmit={handleSubmit}>
       
       <label>

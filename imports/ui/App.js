@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react';
 
 const App = props => {
-  return props.content
+  return (
+    <Fragment>
+       {props.content}
+    </Fragment>
+  )
 }
 
 export default App;

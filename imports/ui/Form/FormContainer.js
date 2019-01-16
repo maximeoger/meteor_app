@@ -8,12 +8,13 @@ class FormContainer extends Component {
     super(props)
 
     this.initialState = {
-      lastname: "",
-      firstname: "",
-      login: "",
-      html_url: "",
-      avatar_url: "",
-      url: "",
+      lastname: this.props.lastname ? this.props.lastname : "",
+      firstname: this.props.firstname ? this.props.firstname : "",
+      login: this.props.login ? this.props.login : "",
+      html_url: this.props.html_url ? this.props.html_url : "",
+      avatar_url: this.props.avatar_url ? this.props.avatar_url : "",
+      url: this.props.url ? this.props.url : "",
+      
       githubResults: {}
     }
 
@@ -128,6 +129,7 @@ class FormContainer extends Component {
       github,
       githubResults
     } = this.state
+
     return (
       <div>
         <Form 

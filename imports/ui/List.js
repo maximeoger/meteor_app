@@ -4,7 +4,7 @@ import Students from '../db/Students.js';
 import Card from '../ui/Components/Card/Card';
 
 const List = (props) => {
-  
+
   if(props.students.length === 0){
     return( 
     <Fragment>
@@ -29,7 +29,7 @@ const List = (props) => {
                 </div>
                 
                 <div className="column">
-                  <a className="button" href={`/${item._id}`}>Modifier</a>
+                  <a className="button" href={`/update-user/${item._id}`}>Modifier</a>
                   <a className="button button-clear" href="#">Suprimer</a>
                 </div>
                 
