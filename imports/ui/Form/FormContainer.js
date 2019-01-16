@@ -7,7 +7,7 @@ class FormContainer extends Component {
   constructor(props){
     super(props)
 
-    this.state = {
+    this.initialState = {
       lastname: "",
       firstname: "",
       login: "",
@@ -16,6 +16,8 @@ class FormContainer extends Component {
       url: "",
       githubResults: {}
     }
+
+    this.state = this.initialState;
 
     this.submitForm = this.submitForm.bind(this);
     
@@ -41,16 +43,22 @@ class FormContainer extends Component {
     const value = e.target.value;
     const name = e.target.name;
     this.setState({ [name]: value})
+
     if( value.length % 3 == 0 ) {
 
-      let response = await fetch(`https://api.github.com/search/users?q=${value}`);
+      let requestConfig = {
+        method: "GET",
+        mode: 'cors',
+      }
+
+      let response = await fetch(`https://api.github.com/search/users?q=${value}`, requestConfig);
 
       let data = await response.json();
 
       this.setState({
         githubResults: data
       })
-
+      
     }
     
   }
@@ -90,9 +98,12 @@ class FormContainer extends Component {
 
     e.preventDefault();
 
-    const { lastname, firstname, github } = this.state; 
+    const { lastname, firstname, login,
+    html_url,
+    avatar_url,
+    url } = this.state; 
 
-    if(lastname === "" || firstname === "" || github === ""){
+    if(lastname === "" || firstname === ""|| login === "" || html_url === "" || avatar_url === "" || url === ""){
       alert('Merci de remplir tours les champs')
       
       return
@@ -101,14 +112,13 @@ class FormContainer extends Component {
     Students.insert({
       lastname,
       firstname,
-      github
+      html_url,
+      avatar_url,
+      url,
+      login
     })
 
-    this.setState({
-      lastname: "",
-      firstname: "",
-      github: "",
-    })
+    this.setState(this.initialState)
   }
 
   render() {
