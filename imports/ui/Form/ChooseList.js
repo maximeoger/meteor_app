@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 
 
-const ChooseList = ({githubResults}) => {
+const ChooseList = ({githubResults, handleClickOnResult}) => {
     return (
-        <Fragment>
+        <Fragment >
             { githubResults.items && githubResults.items.map( user => (
-                <div>
+                <div key={user.id} onClick={ () => handleClickOnResult(user) }>
                     <img src={user.avatar_url}  width="50"/>
                     <span>
                         { user.login }

@@ -10,7 +10,10 @@ class FormContainer extends Component {
     this.state = {
       lastname: "",
       firstname: "",
-      github: "",
+      login: "",
+      html_url: "",
+      avatar_url: "",
+      url: "",
       githubResults: {}
     }
 
@@ -33,20 +36,34 @@ class FormContainer extends Component {
     })
   }
 
-  handleGithubInput = async e => {
+  handleGithubInput = async (e) => {
+
     const value = e.target.value;
     const name = e.target.name;
     this.setState({ [name]: value})
     if( value.length % 3 == 0 ) {
-      await fetch(`https://api.github.com/search/users?q=${value}`)
-              .then(response => response.json())
-              .then(data => {
-                this.setState({
-                  githubResults: data
-                })
-              })
+
+      let response = await fetch(`https://api.github.com/search/users?q=${value}`);
+
+      let data = await response.json();
+
+      this.setState({
+        githubResults: data
+      })
+
     }
     
+  }
+
+  handleClickOnResult = (data) => {
+
+    this.setState({
+      login: data.login,
+      html_url: data.html_url,
+      avatar_url: data.avatar_url,
+      url: data.url,
+      githubResults: {}
+    })
 
   }
 
@@ -58,13 +75,13 @@ class FormContainer extends Component {
 
     const allowUpdate = (lastname !== "" || firstname !== "" || github !== "") && student
 
-    console.log(allowUpdate);
+    console.log(this.state);
 
     if(allowUpdate){
       this.setState({
         lastname: student.lastname,
         firstname: student.firstname,
-        github: student.github
+        github: student.github,
       })
     }
   }
@@ -113,6 +130,7 @@ class FormContainer extends Component {
         >
         </Form>
         <ChooseList 
+          handleClickOnResult={this.handleClickOnResult}
           githubResults={ githubResults }
         />
       </div>

@@ -15,9 +15,8 @@ class User extends Component {
   }
 }
 
-
 export default withTracker( (props) => {
   return {
     student: Students.findOne(props.match.params.user)
   }
-})(User)
+})(User);
