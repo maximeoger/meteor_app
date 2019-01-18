@@ -95,9 +95,11 @@ class FormContainer extends Component {
   }
 
   persistDataInDb = (data) => {
-    Meteor.call('students.updateStudent', {
-      ...data
-    })
+    Meteor.call('students.updateStudent', {...data})
+  }
+
+  addStudent = (data) => {
+    Meteor.call('students.addStudent', {...data})
   }
 
   submitForm(e){
@@ -126,14 +128,16 @@ class FormContainer extends Component {
       })
     }
 
-    Students.insert({
-      lastname,
-      firstname,
-      html_url,
-      avatar_url,
-      url,
-      login
-    })
+    if(this.props.insert){
+      this.addStudent({
+        lastname,
+        firstname,
+        html_url,
+        avatar_url,
+        url,
+        login
+      })
+    }
 
     this.setState(this.initialState)
   }
