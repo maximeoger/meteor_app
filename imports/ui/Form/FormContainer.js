@@ -140,6 +140,8 @@ class FormContainer extends Component {
         url,
         login
       })
+
+      return
     }
 
     this.setState(this.initialState)
