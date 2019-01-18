@@ -13,10 +13,6 @@ const Card = styled.div`
   background-color: ${card_bg};
   padding: 10px;
   border-radius: 4px;
-  transition: all ease-in-out .2s;
-  &:hover{
-    transform: scale(1.01);
-  }
 `;
 
 export default Card;

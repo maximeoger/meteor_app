@@ -3,6 +3,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import Students from '../db/Students.js';
 import Card from '../ui/Components/Card/Card';
 import Avatar from './Components/Avatar';
+import { CallToAction, Link } from './Components/styledComponents.js';
 
 const List = ({ students, handleDelete }) => {
   
@@ -10,7 +11,7 @@ const List = ({ students, handleDelete }) => {
     return( 
     <Fragment>
       <p>La liste est vide</p>
-      <a href="/add-user">CLiquer pour ajouter un utilisateur</a>
+      <CallToAction href="/add-user">CLiquer pour ajouter un utilisateur</CallToAction>
     </Fragment>)
   }
 
@@ -26,12 +27,12 @@ const List = ({ students, handleDelete }) => {
                 </div>
 
                 <div className="column">
-                  <a href={item.html_url}>{item.login}</a>
+                  <Link href={item.html_url}>{item.login}</Link>
                 </div>
                 
                 <div className="column">
-                  <a className="button" href={`/update-user/${item._id}`}>Modifier</a>
-                  <a className="button button-clear" href="#" onClick={ () => handleDelete( item._id )  }>Suprimer</a>
+                  <Link className="button" href={`/update-user/${item._id}`}>Modifier  </Link>
+                  <Link className="button button-clear" href="#" onClick={ () => handleDelete( item._id )  }>Suprimer</Link>
                 </div>
                 
             </Card>

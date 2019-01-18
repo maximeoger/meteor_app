@@ -1,12 +1,12 @@
 import React from 'react';
 import FormContainer from '../Form/FormContainer';
 import ListContainer from '../ListContainer';
-import Link from '../Components/Link/Link';
+import { CallToAction } from '../Components/styledComponents';
 
 const UserList = () => {
   return (
     <div className="container">
-      <Link url="/add-user">Ajouter un utilisateur</Link>
+      <CallToAction href="/add-user">Ajouter un utilisateur</CallToAction>
       <ListContainer />
     </div>
   )

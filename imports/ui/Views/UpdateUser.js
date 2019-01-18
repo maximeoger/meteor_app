@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Link from '../Components/Link/Link';
 import FormContainer from '../Form/FormContainer';
 import Students from '../../db/Students';
 import { withTracker } from 'meteor/react-meteor-data';
+import {Link} from '../Components/styledComponents';
 
 class UpdateUser extends Component {
   constructor(props){
