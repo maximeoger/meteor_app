@@ -10,7 +10,7 @@ class UpdateUser extends Component {
   }
 
   render() {
-    const { student } = this.props
+    const { student, params } = this.props
     
     return (
       <Fragment>
@@ -22,6 +22,7 @@ class UpdateUser extends Component {
         student ?
         <FormContainer 
           update={true}
+          userId={params.userId}
           lastname={student.lastname}
           firstname={student.firstname}
           login={student.login}

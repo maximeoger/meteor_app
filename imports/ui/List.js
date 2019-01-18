@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import Students from '../db/Students.js';
 import Card from '../ui/Components/Card/Card';
+import Avatar from './Components/Avatar';
 
 const List = ({ students, handleDelete }) => {
   
@@ -18,7 +19,7 @@ const List = ({ students, handleDelete }) => {
       {students.map(item => 
              <Card key={item._id}> 
 
-                <img width="50" src={item.avatar_url}/>
+                <Avatar src={item.avatar_url}/>
 
                 <div className="column">
                  {item.firstname} {item.lastname} 

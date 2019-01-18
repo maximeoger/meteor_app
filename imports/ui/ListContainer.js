@@ -4,7 +4,9 @@ import Students from '../db/Students'
 class ListContainer extends Component {
 
   handleDelete( id ) {
-    Students.remove( {"_id":  id })
+    Meteor.call('students.removeStudent', id,
+    (err, res) => console.log(err, res)
+    )
   }
 
 
