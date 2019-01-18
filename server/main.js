@@ -15,9 +15,8 @@ Meteor.methods({
     })
   },
   'students.addStudent'(data) {
-      Students.update(userId, {
-        $set: data
-      })
+      console.log(data);
+      Students.insert(data);
   },
   'students.removeStudent'(id) {
     Students.remove({'_id': id})

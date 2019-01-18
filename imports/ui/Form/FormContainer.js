@@ -100,7 +100,7 @@ class FormContainer extends Component {
   }
 
   addStudent = (data) => {
-    Meteor.call('students.addStudent', {...data})
+    Meteor.call('students.addStudent', data)
   }
 
   submitForm(e){
