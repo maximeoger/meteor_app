@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from './Form';
 import Students from '../../db/Students';
 import ChooseList from './ChooseList'
+import {Meteor} from 'meteor/meteor';
 
 class FormContainer extends Component {
   constructor(props){
@@ -14,7 +15,7 @@ class FormContainer extends Component {
       html_url: this.props.html_url ? this.props.html_url : "",
       avatar_url: this.props.avatar_url ? this.props.avatar_url : "",
       url: this.props.url ? this.props.url : "",
-      
+
       githubResults: {}
     }
 
@@ -84,8 +85,6 @@ class FormContainer extends Component {
 
     const allowUpdate = (lastname !== "" || firstname !== "" || github !== "") && student
 
-    console.log(this.state);
-
     if(allowUpdate){
       this.setState({
         lastname: student.lastname,
@@ -93,6 +92,12 @@ class FormContainer extends Component {
         github: student.github,
       })
     }
+  }
+
+  persistDataInDb = (data) => {
+    Meteor.call('students.updateStudent', {
+      ...data
+    })
   }
 
   submitForm(e){
@@ -108,6 +113,17 @@ class FormContainer extends Component {
       alert('Merci de remplir tours les champs')
       
       return
+    }
+
+    if(this.props.update){
+      this.persistDataInDb({
+        lastname,
+        firstname,
+        html_url,
+        avatar_url,
+        url,
+        login
+      })
     }
 
     Students.insert({

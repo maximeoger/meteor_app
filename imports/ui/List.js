@@ -29,7 +29,7 @@ const List = ({ students, handleDelete }) => {
                 </div>
                 
                 <div className="column">
-                  <a className="button" href={`/${item._id}`}>Modifier</a>
+                  <a className="button" href={`/update-user/${item._id}`}>Modifier</a>
                   <a className="button button-clear" href="#" onClick={ () => handleDelete( item._id )  }>Suprimer</a>
                 </div>
                 

@@ -8,6 +8,7 @@ class UpdateUser extends Component {
   constructor(props){
     super(props)
   }
+
   render() {
     const { student } = this.props
     
@@ -20,6 +21,7 @@ class UpdateUser extends Component {
         {
         student ?
         <FormContainer 
+          update={true}
           lastname={student.lastname}
           firstname={student.firstname}
           login={student.login}

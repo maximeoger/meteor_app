@@ -6,6 +6,9 @@ const AddUser = (props) => {
   return (
     <Fragment>
       <Link url="/">Retour a la home</Link>
+      <header>
+        <h1>Ajouter un eleve</h1>
+      </header>
       <FormContainer/>
     </Fragment>
   )
