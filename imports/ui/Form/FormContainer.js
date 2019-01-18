@@ -99,7 +99,6 @@ class FormContainer extends Component {
     const {userId} = this.props;
 
     const result = Meteor.call('students.updateStudent', userId, data);
-    console.log("result : " , result)
 
   }
 
