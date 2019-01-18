@@ -127,6 +127,8 @@ class FormContainer extends Component {
         url,
         login
       })
+
+      return
     }
 
     Students.insert({
