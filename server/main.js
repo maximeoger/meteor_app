@@ -8,14 +8,17 @@ Students.allow({
   'remove': () => true
 })
 Meteor.methods({
-  'students.updateStudent'(userId , newData) {
-    console.log(userId)
-    newData[_id] = userId
+  'students.updateStudent'( userId , newData ) {
     Students.update(userId, {
       $set: newData
     })
   },
-  'students.removeStudent'( id ) {
-    Students.remove( {"_id":  id })
+  'students.addStudent'(data) {
+      Students.update(userId, {
+        $set: data
+      })
+  },
+  'students.removeStudent'(id) {
+    Students.remove({'_id': id})
   }
 })

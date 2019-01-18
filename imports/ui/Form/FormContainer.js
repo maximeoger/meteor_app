@@ -95,9 +95,12 @@ class FormContainer extends Component {
   }
 
   persistDataInDb = (data) => {
-    Meteor.call('students.updateStudent', data,
-    (err, res) => console.log(err, res)
-    )
+    
+    const {userId} = this.props;
+
+    const result = Meteor.call('students.updateStudent', userId, data);
+    console.log("result : " , result)
+
   }
 
   submitForm(e){
@@ -124,6 +127,8 @@ class FormContainer extends Component {
         url,
         login
       })
+
+      return
     }
 
     Students.insert({
