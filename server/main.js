@@ -1,12 +1,23 @@
 import { Meteor } from 'meteor/meteor';
 import Students from '../imports/db/Students';
 
-Meteor.startup(() => {
-  if (Students.find().count() <= 0) {
-    Students.insert({
-      lastname: "Giselle",
-      firstname: "Beyonce",
-      github: "https://github.com/heticeric"
+
+Students.allow({
+  'insert': () => true,
+  'update': () => true,
+  'remove': () => true
+})
+
+Meteor.methods({
+  'students.updateStudent'( userId , newData ) {
+    Students.update(userId, {
+      $set: newData
     })
+  },
+  'students.addStudent'(data) {
+      Students.insert(data);
+  },
+  'students.removeStudent'(id) {
+    Students.remove({'_id': id})
   }
-});
+})

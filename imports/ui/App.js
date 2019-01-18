@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import FormContainer from './Form/FormContainer';
-import List from './List';
+import React, { Fragment } from 'react';
+import Wrapper from './Components/Wrapper';
+import './reset.css';
 
-// App component - represents the whole app
-export default class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <FormContainer />
-        <List />
-      </div>
-    );
-  }
+const App = props => {
+  return (
+    <Wrapper>
+       {props.content}
+    </Wrapper>
+  )
 }
+
+export default App;

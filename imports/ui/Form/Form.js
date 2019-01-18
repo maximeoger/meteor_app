@@ -1,15 +1,12 @@
 import React, { Fragment } from 'react';
+import ChooseList from './ChooseList';
 
-const Form = ({handleSubmit, handleChange, lastname, firstname, github}) => {
+const Form = ({handleSubmit, handleChange, lastname, firstname, github, handleGithubInput}) => {
     return (
     <Fragment>
 
-      <header>
-        <h1>Ajouter un eleve</h1>
-      </header>
-
       <form onSubmit={handleSubmit}>
-
+      
       <label>
       Nom de famille
       <input type="text"
@@ -28,20 +25,20 @@ const Form = ({handleSubmit, handleChange, lastname, firstname, github}) => {
           name="firstname"></input>
       </label>
       
-
-      <label>
-        lien github
-      <input type="text"
-          placeholder="lien github" 
-          onChange={handleChange} 
-          value={github} 
-          name="github"></input>
-      </label>
-    
+      <div>
+        <label>
+          lien github
+        <input type="text"
+            placeholder="lien github" 
+            onChange={handleGithubInput} 
+            value={github} 
+            name="github"></input>
+        </label>
+      </div>
+      
        
         <button type="submit">go</button>
       </form>
-
     </Fragment>
   )
 }
