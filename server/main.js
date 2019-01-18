@@ -15,7 +15,6 @@ Meteor.methods({
     })
   },
   'students.addStudent'(data) {
-      console.log(data);
       Students.insert(data);
   },
   'students.removeStudent'(id) {
